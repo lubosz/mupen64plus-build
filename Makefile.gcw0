@@ -63,32 +63,32 @@ out/default.gcw0.desktop: default.gcw0.desktop out
 	sed "s/DATE/$(DATE)/g" $< > $@
 
 core: out
-	+make -C ../mupen64plus-core/projects/unix $(MAKE_OPTS) all
-	cp ../mupen64plus-core/projects/unix/libmupen64plus.so.2.0.0 out/libmupen64plus.so.2.0.0
+	+make -C mupen64plus-core/projects/unix $(MAKE_OPTS) all
+	cp mupen64plus-core/projects/unix/libmupen64plus.so.2.0.0 out/libmupen64plus.so.2.0.0
 	ln -sf libmupen64plus.so.2.0.0 out/libmupen64plus.so.2
 
 mupen64plus: out
-	+make -C ../mupen64plus-ui-console/projects/unix $(MAKE_OPTS) all
-	cp ../mupen64plus-ui-console/projects/unix/mupen64plus out/$@
+	+make -C mupen64plus-ui-console/projects/unix $(MAKE_OPTS) all
+	cp mupen64plus-ui-console/projects/unix/mupen64plus out/$@
 
 video-gles2n64: out
-	+make -C ../mupen64plus-video-gles2n64/projects/unix $(MAKE_OPTS) all
-	cp ../mupen64plus-video-gles2n64/projects/unix/mupen64plus-video-n64.so out/mupen64plus-video-n64.so
+	+make -C mupen64plus-video-gles2n64/projects/unix $(MAKE_OPTS) all
+	cp mupen64plus-video-gles2n64/projects/unix/mupen64plus-video-n64.so out/mupen64plus-video-n64.so
 
 rsp-hle input-sdl audio-sdl: out
-	+make -C ../mupen64plus-$@/projects/unix $(MAKE_OPTS) all
-	cp ../mupen64plus-$@/projects/unix/mupen64plus-$@.so out/mupen64plus-$@.so
+	+make -C mupen64plus-$@/projects/unix $(MAKE_OPTS) all
+	cp mupen64plus-$@/projects/unix/mupen64plus-$@.so out/mupen64plus-$@.so
 
 out:
-	cp -r ../mupen64plus-core/data $@
-	cp ../mupen64plus-video-gles2n64/gles2n64.conf $@/gles2n64.conf
-	cp ../mupen64plus-input-sdl/data/InputAutoCfg.ini $@/InputAutoCfg.ini
+	cp -r mupen64plus-core/data $@
+	cp mupen64plus-video-gles2n64/gles2n64.conf $@/gles2n64.conf
+	cp mupen64plus-input-sdl/data/InputAutoCfg.ini $@/InputAutoCfg.ini
 
 clean:
-	make -C ../mupen64plus-core/projects/unix $(MAKE_OPTS) clean
-	make -C ../mupen64plus-input-sdl/projects/unix $(MAKE_OPTS) clean
-	make -C ../mupen64plus-audio-sdl/projects/unix $(MAKE_OPTS) clean
-	make -C ../mupen64plus-rsp-hle/projects/unix $(MAKE_OPTS) clean
-	make -C ../mupen64plus-ui-console/projects/unix $(MAKE_OPTS) clean
-	make -C ../mupen64plus-video-gles2n64/projects/unix $(MAKE_OPTS) clean
+	make -C mupen64plus-core/projects/unix $(MAKE_OPTS) clean
+	make -C mupen64plus-input-sdl/projects/unix $(MAKE_OPTS) clean
+	make -C mupen64plus-audio-sdl/projects/unix $(MAKE_OPTS) clean
+	make -C mupen64plus-rsp-hle/projects/unix $(MAKE_OPTS) clean
+	make -C mupen64plus-ui-console/projects/unix $(MAKE_OPTS) clean
+	make -C mupen64plus-video-gles2n64/projects/unix $(MAKE_OPTS) clean
 	rm -rf out
